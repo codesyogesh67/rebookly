@@ -1,6 +1,11 @@
-// src/app/b/[slug]/page.tsx
-import BookingPortal from "@/pages/booking/BookingPortal";
+import BookingPage from "@/components/booking/booking-page";
 
-export default function Page() {
-  return <BookingPortal />;
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function PublicBookingRoute({ params }: Props) {
+  const { slug } = await params;
+
+  return <BookingPage slug={slug} />;
 }
